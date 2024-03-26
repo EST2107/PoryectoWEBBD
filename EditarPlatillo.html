@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <h2>Editar Platillo</h2>
+    <form action="/ActualizarPlatillo/{{ platillo[0] }}" method="POST">
+        <div class="mb-3">
+            <label for="nuevo_nombre" class="form-label">Nuevo Nombre</label>
+            <input type="text" class="form-control" id="nuevo_nombre" name="nuevo_nombre" value="{{ platillo[1] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="nuevo_precio" class="form-label">Nuevo Precio</label>
+            <input type="text" class="form-control" id="nuevo_precio" name="nuevo_precio" value="{{ platillo[2] }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>
+{% endblock %}
