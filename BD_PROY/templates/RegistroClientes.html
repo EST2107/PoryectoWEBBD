@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+
+<!--AGREGAR CLIENTE -->
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-5">
+            <div class="card card-body">
+                <form action="/AgregarCliente/" method="post">
+                    <div class="mb-3">
+                        <label for="Cedula" class="form-label">Cedula</label>
+                        <input type="text" name="Cedula" id="Cedula" class="form-control" placeholder="Cedula">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Direccion" class="form-label">Direccion</label>
+                        <input type="text" name="Direccion" id="Direccion" class="form-control" placeholder="Direccion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Telefono" class="form-label">Telefono</label>
+                        <input type="text" name="Telefono" id="Telefono" class="form-control" placeholder="Telefono">
+                    </div>
+                    <button type="submit" class="btn btn-primary">AGREGAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+{%  with messages = get_flashed_messages() %}
+{% if messages %} 
+{% for message in messages %}
+  
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <p> {{ message }} </p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Cliente in Clientes %}
+        <tr>
+            <td>{{ Cliente.0 }}</td>
+            <td>{{ Cliente.1 }}</td>
+            <td>{{ Cliente.2 }}</td>
+            <td>{{ Cliente.3 }}</td>
+            <td>
+                <a href="/EditarCliente/{{Cliente.0}}" class="btn btn-secondary">EDITAR</a>
+                <a href="/EliminarCliente/{{Cliente.0}}" class="btn btn-danger">ELIMINAR</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+  
+    
+
+    {% endblock %}

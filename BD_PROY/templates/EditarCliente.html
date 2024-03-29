@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Editar Cliente</h5>
+                    <form action="/Actualizar/{{Cliente.0}}" method="POST">
+                        <div class="mb-3">
+                            <input type="text" name="Cedula" class="form-control" placeholder="Cedula" value="{{Cliente.0}}">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre" value="{{Cliente.1}}">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="Direccion" class="form-control" placeholder="Direccion" value="{{Cliente.2}}">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="Telefono" class="form-control" placeholder="Telefono" value="{{Cliente.3}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">EDITAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

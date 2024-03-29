@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <h2>Registro de Proveedores</h2>
+
+    <!-- Formulario para agregar un nuevo proveedor -->
+    <form action="/AgregarProveedor" method="POST">
+        <div class="mb-3">
+            <label for="proveedor_id" class="form-label">ID del Proveedor</label>
+            <input type="text" class="form-control" id="proveedor_id" name="ProveedorID" placeholder="ID del Proveedor" required>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del Proveedor</label>
+            <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Nombre del Proveedor" required>
+        </div>
+        <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Dirección" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="Telefono" placeholder="Teléfono" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Proveedor</button>
+    </form>
+
+    <!-- Tabla para mostrar los proveedores existentes -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Proveedor</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedores %}
+            <tr>
+                <td>{{ proveedor[0] }}</td>
+                <td>{{ proveedor[1] }}</td>
+                <td>{{ proveedor[2] }}</td>
+                <td>{{ proveedor[3] }}</td>
+                <td>
+                    <!-- Enlaces para editar y eliminar el proveedor -->
+                    <a href="/EditarProveedor/{{ proveedor[0] }}" class="btn btn-primary">Editar</a>
+                    <a href="/EliminarProveedor/{{ proveedor[0] }}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
