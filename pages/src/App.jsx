@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function NavbarComp() {
+export function NavbarComp() {
     return (
       <>
         <Navbar bg="light" expand="lg" className="justify-content-center">
