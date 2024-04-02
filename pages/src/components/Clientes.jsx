@@ -15,7 +15,7 @@ export function Clientes(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://localhost:3000', formData);
+          const response = await axios.post('http://localhost:3000/servidor', formData);
           console.log(response.data);
           // Manejar la respuesta del servidor, si es necesario
         } catch (error) {
