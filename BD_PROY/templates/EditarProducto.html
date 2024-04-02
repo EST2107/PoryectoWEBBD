@@ -1,18 +1,72 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="container">
-    <h2>Editar Producto</h2>
-    <form action="/ActualizarProducto/{{ producto[0] }}" method="POST">
-        <div class="mb-3">
-            <label for="Nombre" class="form-label">Nombre del Producto</label>
-            <input type="text" class="form-control" id="Nombre" name="Nombre" value="{{ producto[1] }}" required>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: #11790d;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #000000; 
+        }
+        .form-label {
+            font-weight: bold;
+            color: #010301;
+        }
+        .form-control {
+            border-color: #ced4da;
+        }
+        .btn-primary {
+            background-color: #11790d;
+            border-color: #11790d;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0e600b;
+            border-color: #0e600b;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2>Editar Producto</h2>
+                <form action="/ActualizarProducto/{{ producto[0] }}" method="POST">
+                    <div class="mb-3">
+                        <label for="Nombre" class="form-label">Nombre del Producto</label>
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" value="{{ producto[1] }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Cantidad" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" id="Cantidad" name="Cantidad" value="{{ producto[2] }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="Cantidad" class="form-label">Cantidad</label>
-            <input type="number" class="form-control" id="Cantidad" name="Cantidad" value="{{ producto[2] }}" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </form>
-</div>
+    </div>
+</body>
+</html>
+
 {% endblock %}

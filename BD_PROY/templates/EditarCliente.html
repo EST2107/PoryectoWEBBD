@@ -1,31 +1,81 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Editar Cliente</h5>
-                    <form action="/Actualizar/{{Cliente.0}}" method="POST">
-                        <div class="mb-3">
-                            <input type="text" name="Cedula" class="form-control" placeholder="Cedula" value="{{Cliente.0}}">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre" value="{{Cliente.1}}">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" name="Direccion" class="form-control" placeholder="Direccion" value="{{Cliente.2}}">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" name="Telefono" class="form-control" placeholder="Telefono" value="{{Cliente.3}}">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">EDITAR</button>
-                    </form>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+       
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            color: #010408;
+            font-size: 1.5rem;
+        }
+        .form-control {
+            border-color: #ced4da;
+        }
+        .btn-primary {
+            background-color: #11790d;
+            border-color: #11790d;
+        }
+        .btn-primary:hover {
+            background-color: #0e600b;
+            border-color: #0e600b;
+        }
+        label {
+            font-weight: bold;
+            color: #010408; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Editar Cliente</h5>
+                        <form action="/Actualizar/{{Cliente.0}}" method="POST">
+                            <div class="mb-3">
+                                <label for="nuevo_nombre" class="form-label">Nueva Cédula</label>
+                                <input type="text" name="Cedula" class="form-control" placeholder="Cédula" value="{{Cliente.0}}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nuevo_nombre" class="form-label">Nuevo Nombre</label>
+                                <input type="text" name="Nombre" class="form-control" placeholder="Nombre" value="{{Cliente.1}}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nuevo_nombre" class="form-label">Nueva Dirección</label>
+                                <input type="text" name="Direccion" class="form-control" placeholder="Dirección" value="{{Cliente.2}}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nuevo_nombre" class="form-label">Nuevo Teléfono</label>
+                                <input type="text" name="Telefono" class="form-control" placeholder="Teléfono" value="{{Cliente.3}}" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">EDITAR</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+</html>
 {% endblock %}
 

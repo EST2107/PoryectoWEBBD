@@ -1,54 +1,125 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="container">
-    <h2>Registro de Productos</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Productos</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional custom styling */
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #000307;
+        }
+        th {
+            background-color: #11790d;
+            color: #fff;
+            font-weight: bold;
+        }
+        .btn {
+            margin-right: 5px;
+        }
+        
+        .btn-agregar {
+            background-color: #11790d;
+            border-color: #11790d;
+            color: #ffffff;
+        }
+        .btn-agregar:hover {
+            background-color: #0e600b;
+            border-color: #0e600b;
+            color: #ffffff;
+        }
+        
+        .btn-editar {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #ffffff;
+        }
+        .btn-editar:hover {
+            background-color: #575050d5;
+            border-color: #575050d5;
+            color: #ffffff;
+        }
+        
+        .btn-eliminar {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #ffffff;
+        }
+        .btn-eliminar:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+            color: #ffffff;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registro de Productos</h2>
 
-    <!-- Formulario para agregar un nuevo producto -->
-    <form action="/AgregarProducto" method="POST">
-        <div class="mb-3">
-            <label for="ProductoID" class="form-label">ID del Producto</label>
-            <input type="text" class="form-control" id="ProductoID" name="ProductoID" required>
-        </div>
-        <div class="mb-3">
-            <label for="Nombre" class="form-label">Nombre del Producto</label>
-            <input type="text" class="form-control" id="Nombre" name="Nombre" required>
-        </div>
-        <div class="mb-3">
-            <label for="Cantidad" class="form-label">Cantidad</label>
-            <input type="number" class="form-control" id="Cantidad" name="Cantidad" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Agregar Producto</button>
-    </form>
+        <!-- Formulario para agregar un nuevo producto -->
+        <form action="/AgregarProducto" method="POST">
+            <div class="form-group">
+                <label for="ProductoID">ID del Producto</label>
+                <input type="text" class="form-control" id="ProductoID" name="ProductoID" required>
+            </div>
+            <div class="form-group">
+                <label for="Nombre">Nombre del Producto</label>
+                <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="Cantidad">Cantidad</label>
+                <input type="number" class="form-control" id="Cantidad" name="Cantidad" required>
+            </div>
+            <button type="submit" class="btn btn-agregar">Agregar Producto</button>
+        </form>
 
-    <!-- Tabla para mostrar los productos existentes -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre del Producto</th>
-                <th>Cantidad Disponible</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in productos %}
-            <tr>
-                <td>{{ producto[0] }}</td>
-                <td>{{ producto[1] }}</td>
-                <td>{{ producto[2] }}</td>
-                <td>
-                    <!-- Enlace para editar el producto -->
-                    <a href="/EditarProducto/{{ producto[0] }}" class="btn btn-primary">Editar</a>
-                    <!-- Formulario para eliminar el producto -->
-                    <form action="/EliminarProducto/{{ producto[0] }}" method="POST">
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+        <!-- Tabla para mostrar los productos existentes -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Producto</th>
+                    <th>Cantidad Disponible</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto[0] }}</td>
+                    <td>{{ producto[1] }}</td>
+                    <td>{{ producto[2] }}</td>
+                    <td>
+                        <!-- Enlace para editar el producto -->
+                        <a href="/EditarProducto/{{ producto[0] }}" class="btn btn-editar">Editar</a>
+                        <!-- Formulario para eliminar el producto -->
+                        <form action="/EliminarProducto/{{ producto[0] }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-eliminar">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
 {% endblock %}
 

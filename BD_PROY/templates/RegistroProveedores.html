@@ -1,58 +1,129 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="container">
-    <h2>Registro de Proveedores</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Proveedores</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #000307;
+        }
+        th {
+            background-color: #11790d;
+            color: #fff;
+            font-weight: bold; 
+        }
+        
+        .btn-editar {
+            margin-right: 5px;
+            background-color: #6c757d; 
+            border-color: #6c757d;
+            color: #ffffff;
+        }
+        .btn-editar:hover {
+            background-color: #575050d5; 
+            border-color: #575050d5; 
+            color: #ffffff;
 
-    <!-- Formulario para agregar un nuevo proveedor -->
-    <form action="/AgregarProveedor" method="POST">
-        <div class="mb-3">
-            <label for="proveedor_id" class="form-label">ID del Proveedor</label>
-            <input type="text" class="form-control" id="proveedor_id" name="ProveedorID" placeholder="ID del Proveedor" required>
-        </div>
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre del Proveedor</label>
-            <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Nombre del Proveedor" required>
-        </div>
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Dirección" required>
-        </div>
-        <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="telefono" name="Telefono" placeholder="Teléfono" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Agregar Proveedor</button>
-    </form>
+        }
+        .btn-eliminar {
+            background-color: #dc3545; 
+            border-color: #dc3545; 
+            color: #ffffff;
+        }
+        .btn-eliminar:hover {
+            background-color: #c82333; 
+            border-color: #bd2130; 
+            color: #ffffff;
+        }
+        
+        .btn-agregar {
+            background-color: #11790d; 
+            border-color: #11790d; 
+            color: #ffffff; 
+        }
 
-    <!-- Tabla para mostrar los proveedores existentes -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre del Proveedor</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for proveedor in proveedores %}
-            <tr>
-                <td>{{ proveedor[0] }}</td>
-                <td>{{ proveedor[1] }}</td>
-                <td>{{ proveedor[2] }}</td>
-                <td>{{ proveedor[3] }}</td>
-                <td>
-                    <!-- Enlaces para editar y eliminar el proveedor -->
-                    <a href="/EditarProveedor/{{ proveedor[0] }}" class="btn btn-primary">Editar</a>
-                    <a href="/EliminarProveedor/{{ proveedor[0] }}" class="btn btn-danger">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+        .btn-agregar:hover {
+            background-color: #0e600b; 
+            border-color: #0e600b; 
+            color: #ffffff; 
+        }
+        label {
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registro de Proveedores</h2>
+
+        <!-- Formulario para agregar un nuevo proveedor -->
+        <form action="/AgregarProveedor" method="POST">
+            <div class="form-group">
+                <label for="proveedor_id" style="font-weight:bold;">ID del Proveedor</label> <!-- Added -->
+                <input type="text" class="form-control" id="proveedor_id" name="ProveedorID" placeholder="ID del Proveedor" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre" style="font-weight:bold;">Nombre del Proveedor</label> <!-- Added -->
+                <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Nombre del Proveedor" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion" style="font-weight:bold;">Dirección</label> <!-- Added -->
+                <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Dirección" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono" style="font-weight:bold;">Teléfono</label> <!-- Added -->
+                <input type="text" class="form-control" id="telefono" name="Telefono" placeholder="Teléfono" required>
+            </div>
+            <button type="submit" class="btn btn-agregar">Agregar Proveedor</button>
+
+        </form>
+
+        <!-- Tabla para mostrar los proveedores existentes -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Proveedor</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                <tr>
+                    <td>{{ proveedor[0] }}</td>
+                    <td>{{ proveedor[1] }}</td>
+                    <td>{{ proveedor[2] }}</td>
+                    <td>{{ proveedor[3] }}</td>
+                    <td>
+                        <!-- Enlaces para editar y eliminar el proveedor -->
+                        <a href="/EditarProveedor/{{ proveedor[0] }}" class="btn btn-editar">Editar</a>
+                        <a href="/EliminarProveedor/{{ proveedor[0] }}" class="btn btn-eliminar">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
 {% endblock %}
 
 

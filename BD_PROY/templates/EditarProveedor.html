@@ -1,22 +1,82 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="container">
-    <h2>Actualizar Proveedor</h2>
-    <form action="/ActualizarProveedor/{{ proveedor[0] }}" method="POST">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre del Proveedor</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ proveedor[1] }}" required>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Proveedor</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            color: #010408;
+            font-size: 1.5rem;
+        }
+        .form-control {
+            border-color: #ced4da;
+        }
+        .btn-primary {
+            background-color: #11790d;
+            border-color: #11790d;
+            color: #ffffff;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0e600b;
+            border-color: #0e600b;
+            color: #ffffff;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #010408;
+        }
+        label {
+            font-weight: bold; 
+            color: #010408;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-center mb-4">Actualizar Proveedor</h2>
+                <form action="/ActualizarProveedor/{{ proveedor[0] }}" method="POST">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del Proveedor</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ proveedor[1] }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ proveedor[2] }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono" value="{{ proveedor[3] }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Guardar Cambios</button>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" value="{{ proveedor[2] }}" required>
-        </div>
-        <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ proveedor[3] }}" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </form>
-</div>
+    </div>
+</body>
+</html>
+
+
 {% endblock %}
