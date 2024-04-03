@@ -16,7 +16,7 @@ mysql = MySQL(App)
 App.secret_key = 'mysecretkey'
 
 
-@App.route('/')
+@App.route('/RegistroClientes')
 def RegistroClientes():
     cur=mysql.connection.cursor()
     cur.execute('SELECT * FROM Clientes')
